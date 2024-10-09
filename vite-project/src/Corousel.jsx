@@ -47,8 +47,7 @@ const Corousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isClient, setIsClient] = useState(false);
   const [activeSection, setActiveSection] = useState('details');
-  const [selectedButton, setSelectedButton] = useState(null);
-  const [itemCount, setItemCount] = useState(1); // New state for item count
+  const [itemCount, setItemCount] = useState(1);
 
   useEffect(() => {
     setIsClient(true);
@@ -86,14 +85,14 @@ const Corousel = () => {
   return (
     <div className="flex flex-col md:flex-row w-full h-full">
       {/* Carousel Images */}
-      <div className="relative w-full md:w-1/2 overflow-hidden flex items-center justify-center"> {/* Centering the image */}
+      <div className="relative w-full md:w-1/2 overflow-hidden flex items-center justify-center">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)`, width: `${images.length * 100}%` }}
         >
           {images.map((image, index) => (
-            <div key={index} className="w-full shrink-0 flex justify-center"> {/* Center image container */}
-              <img src={image.src} alt={`Slide ${index + 1}`} className="object-contain max-h-full max-w-full" /> {/* Adjust max size */}
+            <div key={index} className="w-full shrink-0 flex justify-center">
+              <img src={image.src} alt={`Slide ${index + 1}`} className="object-contain max-h-full max-w-full" />
             </div>
           ))}
         </div>
@@ -194,18 +193,18 @@ const Corousel = () => {
 
         {/* Section Selector */}
         <div className="flex space-x-4 mt-4">
-          <button
+          <span
             onClick={() => setActiveSection('details')}
-            className={`px-4 py-2 rounded-lg ${activeSection === 'details' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+            className={`cursor-pointer ${activeSection === 'details' ? 'underline font-bold' : ''}`}
           >
             Details
-          </button>
-          <button
+          </span>
+          <span
             onClick={() => setActiveSection('howToUse')}
-            className={`px-4 py-2 rounded-lg ${activeSection === 'howToUse' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+            className={`cursor-pointer ${activeSection === 'howToUse' ? 'underline font-bold' : ''}`}
           >
             How to Use
-          </button>
+          </span>
         </div>
 
         {/* Display Section Content */}
